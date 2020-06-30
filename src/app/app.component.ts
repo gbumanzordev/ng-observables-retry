@@ -11,10 +11,15 @@ export class AppComponent implements OnInit {
   constructor(private retryRequestService: RetryRequestService) {}
 
   ngOnInit() {
-    console.time('connection');
-    this.retryRequestService.getInformation().subscribe((response) => {
-      console.log('received a value with no errors');
-      console.timeEnd('connection');
-    });
+    console.time('test');
+    this.retryRequestService.getInformation().subscribe(
+      (response) => {
+        console.log('SUCCESS');
+        console.timeEnd('test');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
